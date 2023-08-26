@@ -22,8 +22,9 @@ local RunService = game:GetService("RunService");
 
 local PixelPilot = {
     SelectorSquare = Draw("Square");    
-    RenderBin = nil;
     DeltaPosition = Vector2(0, 0);
+    RenderBin = nil;
+    MouseDelta = 0;
     Mouse1Cooking = false;
     Mouse2Cooking = false;
     Mouse1Down = false; 
@@ -34,7 +35,7 @@ local PixelPilot = {
     __ImmediateCache = { };
     __ZIndexPile = { };
     __ZIndex = 1;
-    __LastDeltaStep = Vector2(0, 0);
+    __MouseDeltaPoint = 0;
 };
 
 PixelPilot.TriCubeVerticies = {
@@ -166,7 +167,7 @@ function Bin:Remove(Object)
 end;
 
 function Bin:Clear()
-    for i, g in pairs(self.Collection) do 
+    for i, g in pairs(self:GetCollection()) do 
         local Type = typeof(g);
         local IsTable = (Type == "table");
 
@@ -193,10 +194,6 @@ function Bin:Clear()
             Signal = function()
                 g:Close();
             end; 
-
-            Render = function()
-                g:Destroy();
-            end;
 
             Bin = function()
                 g:Clear();
@@ -315,6 +312,10 @@ function PixelPilot.Tween(Object, TweenInfo, Goals)
     return NewTween;
 end; 
 
+function PixelPilot.GetMouseLocation()
+    return InputService:GetMouseLocation();
+end; 
+
 function PixelPilot.IsMouseOnObject(Object)
     local Mouse = InputService:GetMouseLocation(); 
     local Size = (Object.TextBounds or Object.Size);
@@ -368,7 +369,7 @@ function Gui:GetChildren()
     return self.Properties.Children;
 end;
 
-function Gui:Destroy()
+function Gui:Remove()
     PixelPilot.RenderBin:Remove(self);
     self.ObjectBin:Destroy();
     self.Render:Remove();
@@ -512,11 +513,20 @@ InputService.InputEnded:Connect(function(Input)
 end);
 
 InputService.InputChanged:Connect(function(Input)
-    if (Enum.UserInputType.MouseMovement == Input.UserInputType) then 
-        if (PixelPilot.Mouse1Cooking) then 
-
-        end;
+    if (Enum.UserInputType.MouseMovement == Input.UserInputType) then
     end; 
 end);
 
-return PixelPilot;
+
+-- test imdraw 
+local Buttons = { };
+
+local ImmediateButton = { };
+ImmediateButton.__index = Button; 
+
+
+local Camera = workspace.CurrentCamera; 
+
+PixelPilot.OnPaint:Listen(function()    
+end);   
+

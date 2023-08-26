@@ -517,16 +517,5 @@ InputService.InputChanged:Connect(function(Input)
     end; 
 end);
 
-
--- test imdraw 
-local Buttons = { };
-
-local ImmediateButton = { };
-ImmediateButton.__index = Button; 
-
-
-local Camera = workspace.CurrentCamera; 
-
-PixelPilot.OnPaint:Listen(function()    
-end);   
+return PixelPilot;
 

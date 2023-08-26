@@ -441,6 +441,8 @@ PixelPilot.ImmediateDraw = function(Class, Properties)
     end;    
 
     Insert(PixelPilot.__ImmediateCache, Drawing);
+
+    return Drawing;
 end;
 
 PixelPilot.ImmediateDrawVerticies = function(Verticies, Properties)
@@ -518,4 +520,3 @@ InputService.InputChanged:Connect(function(Input)
 end);
 
 return PixelPilot;
-

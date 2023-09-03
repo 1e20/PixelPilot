@@ -445,10 +445,10 @@ PixelPilot.ImmediateDraw = function(Class, Properties)
     return Drawing;
 end;
 
-PixelPilot.DrawPolygon = function(Verticies, Properties)
-    for i = 1, #Verticies do 
-        Properties.From = Vertices[i];
-        Properties.To = (Verticies[i + 1] or Verticies[1]);
+PixelPilot.DrawPolygon = function(Poly, Properties)
+    for i = 1, #Poly do 
+        Properties.From = Poly[i];
+        Properties.To = (Poly[i + 1] or Poly[1]);
         PixelPilot.ImmediateDraw("Line", Properties);
     end; 
 end;
@@ -517,6 +517,5 @@ InputService.InputChanged:Connect(function(Input)
     if (Enum.UserInputType.MouseMovement == Input.UserInputType) then
     end; 
 end);
-
 
 return PixelPilot;

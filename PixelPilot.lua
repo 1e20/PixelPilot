@@ -32,7 +32,7 @@ local PixelPilot = {
     Mouse1Up = false; 
     Mouse1Down = false;
     PaintFireFps = 60;
-    __ImmediateMemory = { Square = { }; Line = { }; Text = { }; Quad = { }; Triangle = { } };
+    __ImmediateMemory = { Square = { }; Line = { }; Text = { }; Quad = { }; Triangle = { }; Circle = { } };
     __ImmediateCache = { };
     __ZIndexPile = { };
     __ZIndex = 1;

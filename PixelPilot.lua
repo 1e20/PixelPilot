@@ -460,7 +460,7 @@ coroutine.resume(coroutine.create(function()
     while (true) do 
         ClearScreen();
         PixelPilot.OnPaint:Fire();
-        task.wait(1/PixelPilot.PaintFireFps);
+        RunService.RenderStepped:Wait();
     end;
 end));
 

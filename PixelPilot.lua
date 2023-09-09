@@ -451,7 +451,7 @@ PixelPilot.ImmediateDrawPolygon = function(Poly, Properties, Bounds);
         local To = (Poly[i + 1] or Poly[1]); 
         local From = Poly[i];
         Properties.From = PixelPilot.Vector2(Clamp(From.x, Bounds.Min.x, Bounds.Max.x), Clamp(From.y, Bounds.Min.y, Bounds.Max.y));
-        Properties.To = PixelPilot.Vector2(Clamp(To.x, Bounds.Min.x, Bounds.Max.x), Clamp(To.y, Bounds.Min.y, Bounds.Max.y));;
+        Properties.To = PixelPilot.Vector2(Clamp(To.x, Bounds.Min.x, Bounds.Max.x), Clamp(To.y, Bounds.Min.y, Bounds.Max.y));
         PixelPilot.ImmediateDraw("Line", Properties);
     end; 
 end;

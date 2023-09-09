@@ -446,7 +446,7 @@ PixelPilot.ImmediateDraw = function(Class, Properties)
     return Drawing;
 end;
 
-PixelPilot.ImmediateDrawPolygon = function(Poly, Properties, Bounds);
+PixelPilot.ImmediateDrawPolygon = function(Poly, Properties, Bounds)
     for i = 1, #Poly do 
         local To = (Poly[i + 1] or Poly[1]); 
         local From = Poly[i];
